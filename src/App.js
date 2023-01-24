@@ -19,7 +19,6 @@ export default function App() {
           id='fetchdata'
         />
       </div>
-      Helloooooo
       <CreateUser />
     </div>
   );
