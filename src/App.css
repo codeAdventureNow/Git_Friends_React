@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', sans-serif;
+  /* color: #eee;
+  background-color: #222; */
+  /* background-color: #60b347; */
+  background: #2bd1fc;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-top: 10%;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #ff3f3f;
+}
+
+.friends {
+  color: white;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.inputContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  margin-top: 3rem;
+  gap: 1rem;
+}
+
+#fetchdata {
+  background-color: #f3ea5f;
+  border: none;
+  color: black;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', sans-serif;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f3ea5f;
+  color: black;
+  border-radius: 20px;
+  flex-basis: 40%;
+  max-width: 70%;
+  font-size: 12px;
+  margin: 0 20px;
+}
+
+.user img {
+  border-radius: 100%;
+  height: 100px;
+}
+
+.user * {
+  margin: 10px;
+}
+
+input {
+  flex-basis: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 1rem;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f3ea5f;
+    color: black;
+    border-radius: 20px;
+    flex-basis: 40%;
+    max-width: 30%;
+
+    font-size: 12px;
+  }
+
+  #fetchdata {
+    background-color: #f3ea5f;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+}
