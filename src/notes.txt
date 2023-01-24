@@ -1,1 +1,3 @@
 https://v2.jokeapi.dev/joke/Any
+
+https://www.youtube.com/watch?v=Vspeudp-M9k
