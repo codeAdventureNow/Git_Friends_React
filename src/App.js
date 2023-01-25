@@ -1,14 +1,14 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import useFetch from './useFetch';
-import CreateUser from './CreateUser';
 
 export default function App() {
   // const [isSent, setIsSent] = useState(false);
-  const [user, setUser] = useState('Hi');
+  const [user, setUser] = useState('');
   const [login, setLogin] = useState('');
   const [location, setLocation] = useState('');
   const [bio, setBio] = useState('');
+  // const [avatar, setAvatar] = useState('');
+  // const [name, setName] = useState('');
 
   const URL = `https://api.github.com/users/${user}`;
   function handleSubmit(e) {
@@ -24,10 +24,12 @@ export default function App() {
         setLogin(json.login);
         setLocation(json.location);
         setBio(json.bio);
+        // setAvatar(json.avatar_url);
+        // setName(json.name);
       });
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <div className='App'>
@@ -36,20 +38,22 @@ export default function App() {
       </h1>
       <div className='button'>
         <form onSubmit={handleSubmit}>
-          <textarea
+          <input
             className='inputContainer'
             placeholder='   Enter Git Hub Name'
             value={user}
             onChange={(e) => setUser(e.target.value)}
-          ></textarea>
+          ></input>
           <button type='submit' id='fetchdata'>
             Search
           </button>
         </form>
       </div>
-      <div>
+      <div className='user'>
         <div>{bio}</div>
+
         <div>{login}</div>
+
         <div>{location}</div>
       </div>
     </div>
