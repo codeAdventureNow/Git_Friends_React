@@ -1,9 +1,7 @@
 import useFetch from './useFetch';
 
-export default function CreateUser() {
-  const { data, loading, error } = useFetch(
-    ' https://api.github.com/users/d-pagey'
-  );
+export default function CreateUser(url) {
+  const { data, loading, error } = useFetch(url);
   if (loading) return <h1> Loading ...</h1>;
   if (error) return console.log(error);
 
