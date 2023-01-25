@@ -17,7 +17,6 @@ export default function CreateUser(url) {
           {data?.login}
         </a>
       </p>
-      >
     </div>
   );
 }
