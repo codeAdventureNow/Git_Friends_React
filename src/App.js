@@ -51,9 +51,7 @@ export default function App() {
       </div>
       <div className='user'>
         <div>{bio}</div>
-
         <div>{login}</div>
-
         <div>{location}</div>
       </div>
     </div>
