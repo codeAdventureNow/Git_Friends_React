@@ -1,6 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
+function Card() {}
+
 export default function App() {
   // const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState('');
@@ -10,6 +12,7 @@ export default function App() {
   const [bio, setBio] = useState('');
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
+  const [link, setLink] = useState('');
 
   const URL = `https://api.github.com/users/${user}`;
   function handleSubmit(e) {
@@ -27,6 +30,7 @@ export default function App() {
       setBio(json.bio);
       setAvatar(json.avatar_url);
       setName(json.name);
+      setLink(json.html_url);
       // setAvatar(json.avatar_url);
       // setName(json.name);
     });
@@ -55,9 +59,14 @@ export default function App() {
         </form>
       </div>
       <div className='user'>
-        <div>{bio}</div>
-        <div>{login}</div>
-        <div>{location}</div>
+        <img src={avatar} alt={name} />
+        <p>Login: {login}</p>
+        <p>
+          GitHub Profile:{' '}
+          <a href={link} target='_blank'>
+            {login}
+          </a>
+        </p>
       </div>
     </div>
   );
