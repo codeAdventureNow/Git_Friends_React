@@ -4,30 +4,35 @@ import { useState, useEffect } from 'react';
 export default function App() {
   // const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState('');
+  const [fetchedData, setFetchedData] = useState('');
   const [login, setLogin] = useState('');
   const [location, setLocation] = useState('');
   const [bio, setBio] = useState('');
-  // const [avatar, setAvatar] = useState('');
-  // const [name, setName] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [name, setName] = useState('');
 
   const URL = `https://api.github.com/users/${user}`;
   function handleSubmit(e) {
     e.preventDefault();
+    fetchData();
     // setIsSent(true);
     console.log(`Submitted ${user}`);
   }
 
+  const fetchData = async () => {
+    const result = await fetch(URL);
+    result.json().then((json) => {
+      setLogin(json.login);
+      setLocation(json.location);
+      setBio(json.bio);
+      setAvatar(json.avatar_url);
+      setName(json.name);
+      // setAvatar(json.avatar_url);
+      // setName(json.name);
+    });
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(URL);
-      result.json().then((json) => {
-        setLogin(json.login);
-        setLocation(json.location);
-        setBio(json.bio);
-        // setAvatar(json.avatar_url);
-        // setName(json.name);
-      });
-    };
     fetchData();
   }, []);
 
