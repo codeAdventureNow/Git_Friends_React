@@ -3,43 +3,45 @@ import { useState, useEffect } from 'react';
 
 export default function App() {
   // const [isSent, setIsSent] = useState(false);
+  //User
   const [user, setUser] = useState('');
-  const [fetchedData, setFetchedData] = useState('');
   const [login, setLogin] = useState('');
-  const [location, setLocation] = useState('');
-  const [bio, setBio] = useState('');
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
   // const [person, setPerson] = useState({});
 
+  //user Friends
+  const [flogin, setFLogin] = useState('');
+  const [favatar, setFAvatar] = useState('');
+  const [fname, setFName] = useState('');
+  const [flink, setFLink] = useState('');
+
   function handleSubmit(e) {
     e.preventDefault();
     fetchData();
-    // fetchFriends();
+    fetchFriends();
 
     console.log(`Submitted ${user}`);
     // console.log(person);
   }
 
-  // const fetchFriends = async () => {
-  //   const URL = `https://api.github.com/users/${user}`;
-  //   if (!user) return;
+  const fetchFriends = async () => {
+    const URL = `https://api.github.com/users/${user}/followers`;
+    if (!user) return;
 
-  //   const result = await fetch(URL);
-  //   result.json().then((json) => {
-  //     setFLogin(json.login);
-  //     setLocation(json.location);
-  //     setBio(json.bio);
-  //     setAvatar(json.avatar_url);
-  //     setName(json.name);
-  //     setLink(json.html_url);
-  //     // setPerson(json);
+    const result = await fetch(URL);
+    result.json().then((json) => {
+      setFLogin(json.login);
+      setFAvatar(json.avatar_url);
+      setFName(json.name);
+      setFLink(json.html_url);
+      // setPerson(json);
 
-  //     // setAvatar(json.avatar_url);
-  //     // setName(json.name);
-  //   });
-  // };
+      // setAvatar(json.avatar_url);
+      // setName(json.name);
+    });
+  };
 
   const fetchData = async () => {
     const URL = `https://api.github.com/users/${user}`;
@@ -48,8 +50,6 @@ export default function App() {
     const result = await fetch(URL);
     result.json().then((json) => {
       setLogin(json.login);
-      setLocation(json.location);
-      setBio(json.bio);
       setAvatar(json.avatar_url);
       setName(json.name);
       setLink(json.html_url);
@@ -94,6 +94,18 @@ export default function App() {
           </p>
         </div>
       )}
+      {/* {flogin && (
+        <div className='user'>
+          <img src={favatar} alt={fname} />
+          <p>Login: {flogin}</p>
+          <p>
+            GitHub Profile:{' '}
+            <a href={flink} target='_blank'>
+              {flogin}
+            </a>
+          </p>
+        </div>
+      )} */}
     </div>
   );
 }
