@@ -1,8 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-function Card() {}
-
 export default function App() {
   // const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState('');
@@ -13,16 +11,40 @@ export default function App() {
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
+  // const [person, setPerson] = useState({});
 
-  const URL = `https://api.github.com/users/${user}`;
   function handleSubmit(e) {
     e.preventDefault();
     fetchData();
-    // setIsSent(true);
+    // fetchFriends();
+
     console.log(`Submitted ${user}`);
+    // console.log(person);
   }
 
+  // const fetchFriends = async () => {
+  //   const URL = `https://api.github.com/users/${user}`;
+  //   if (!user) return;
+
+  //   const result = await fetch(URL);
+  //   result.json().then((json) => {
+  //     setFLogin(json.login);
+  //     setLocation(json.location);
+  //     setBio(json.bio);
+  //     setAvatar(json.avatar_url);
+  //     setName(json.name);
+  //     setLink(json.html_url);
+  //     // setPerson(json);
+
+  //     // setAvatar(json.avatar_url);
+  //     // setName(json.name);
+  //   });
+  // };
+
   const fetchData = async () => {
+    const URL = `https://api.github.com/users/${user}`;
+    if (!user) return;
+
     const result = await fetch(URL);
     result.json().then((json) => {
       setLogin(json.login);
@@ -31,6 +53,8 @@ export default function App() {
       setAvatar(json.avatar_url);
       setName(json.name);
       setLink(json.html_url);
+      // setPerson(json);
+
       // setAvatar(json.avatar_url);
       // setName(json.name);
     });
@@ -58,16 +82,18 @@ export default function App() {
           </button>
         </form>
       </div>
-      <div className='user'>
-        <img src={avatar} alt={name} />
-        <p>Login: {login}</p>
-        <p>
-          GitHub Profile:{' '}
-          <a href={link} target='_blank'>
-            {login}
-          </a>
-        </p>
-      </div>
+      {login && (
+        <div className='user'>
+          <img src={avatar} alt={name} />
+          <p>Login: {login}</p>
+          <p>
+            GitHub Profile:{' '}
+            <a href={link} target='_blank'>
+              {login}
+            </a>
+          </p>
+        </div>
+      )}
     </div>
   );
 }
