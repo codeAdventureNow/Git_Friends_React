@@ -9,13 +9,15 @@ export default function App() {
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
-  // const [person, setPerson] = useState({});
+  const [person, setPerson] = useState([]);
 
   //user Friends
-  const [flogin, setFLogin] = useState('');
+  const [flogin, setFLogin] = useState();
   const [favatar, setFAvatar] = useState('');
   const [fname, setFName] = useState('');
   const [flink, setFLink] = useState('');
+
+  console.log(flogin);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,13 +28,26 @@ export default function App() {
     // console.log(person);
   }
 
+  const friends = flogin.map((friend) => (
+    <li key={friend.id}>
+      <img src={friend.avatar_url} alt={friend.login} />
+      <p>Login: {friend.login}</p>
+      <p>
+        GitHub Profile:{' '}
+        <a href={friend.html_url} target='_blank'>
+          {friend.login}
+        </a>
+      </p>
+    </li>
+  ));
+
   const fetchFriends = async () => {
     const URL = `https://api.github.com/users/${user}/followers`;
     if (!user) return;
 
     const result = await fetch(URL);
     result.json().then((json) => {
-      setFLogin(json.login);
+      setFLogin(json);
       setFAvatar(json.avatar_url);
       setFName(json.name);
       setFLink(json.html_url);
@@ -40,6 +55,7 @@ export default function App() {
 
       // setAvatar(json.avatar_url);
       // setName(json.name);
+      console.log(person);
     });
   };
 
@@ -92,20 +108,11 @@ export default function App() {
               {login}
             </a>
           </p>
+          <div>
+            <ul>{friends}</ul>
+          </div>
         </div>
       )}
-      {/* {flogin && (
-        <div className='user'>
-          <img src={favatar} alt={fname} />
-          <p>Login: {flogin}</p>
-          <p>
-            GitHub Profile:{' '}
-            <a href={flink} target='_blank'>
-              {flogin}
-            </a>
-          </p>
-        </div>
-      )} */}
     </div>
   );
 }
