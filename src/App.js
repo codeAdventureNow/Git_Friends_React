@@ -14,28 +14,30 @@ export default function App() {
   const [flogin, setFLogin] = useState([]);
 
   // console.log(flogin);
-  console.log(person);
+  // console.log(person);
 
   function handleSubmit(e) {
     e.preventDefault();
     fetchData();
     fetchFriends();
 
-    console.log(`Submitted ${user}`);
+    // console.log(`Submitted ${user}`);
   }
 
-  const friends = flogin.map((friend) => (
-    <li key={friend.id}>
-      <img src={friend.avatar_url} alt={friend.login} />
-      <p>Login: {friend.login}</p>
-      <p>
-        GitHub Profile:{' '}
-        <a href={friend.html_url} target='_blank'>
-          {friend.login}
-        </a>
-      </p>
-    </li>
-  ));
+  const friends = flogin.map((friend) =>
+    (
+      <div key={friend.id}>
+        <img src={friend.avatar_url} alt={friend.login} />
+        <p>Login: {friend.login}</p>
+        <p>
+          GitHub Profile:{' '}
+          <a href={friend.html_url} target='_blank'>
+            {friend.login}
+          </a>
+        </p>
+      </div>
+    ).join('')
+  );
 
   const fetchFriends = async () => {
     const URL = `https://api.github.com/users/${user}/followers`;
