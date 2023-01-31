@@ -96,8 +96,8 @@ export default function App() {
               </a>
             </p>
           </div>
-          <div className='userFriends'>
-            <ul>{friends}</ul>
+          <div>
+            <ul className='userFriends'>{friends}</ul>
           </div>
         </div>
       )}
