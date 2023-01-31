@@ -9,13 +9,9 @@ export default function App() {
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
-  const [person, setPerson] = useState([]);
 
   //user Friends
-  const [flogin, setFLogin] = useState();
-  const [favatar, setFAvatar] = useState('');
-  const [fname, setFName] = useState('');
-  const [flink, setFLink] = useState('');
+  const [flogin, setFLogin] = useState([]);
 
   console.log(flogin);
 
@@ -48,14 +44,6 @@ export default function App() {
     const result = await fetch(URL);
     result.json().then((json) => {
       setFLogin(json);
-      setFAvatar(json.avatar_url);
-      setFName(json.name);
-      setFLink(json.html_url);
-      // setPerson(json);
-
-      // setAvatar(json.avatar_url);
-      // setName(json.name);
-      console.log(person);
     });
   };
 
@@ -70,9 +58,6 @@ export default function App() {
       setName(json.name);
       setLink(json.html_url);
       // setPerson(json);
-
-      // setAvatar(json.avatar_url);
-      // setName(json.name);
     });
   };
 
