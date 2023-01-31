@@ -2,18 +2,19 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  // const [isSent, setIsSent] = useState(false);
   //User
   const [user, setUser] = useState('');
   const [login, setLogin] = useState('');
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
+  const [person, setPerson] = useState({});
 
   //user Friends
   const [flogin, setFLogin] = useState([]);
 
-  console.log(flogin);
+  // console.log(flogin);
+  console.log(person);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +22,6 @@ export default function App() {
     fetchFriends();
 
     console.log(`Submitted ${user}`);
-    // console.log(person);
   }
 
   const friends = flogin.map((friend) => (
@@ -53,11 +53,11 @@ export default function App() {
 
     const result = await fetch(URL);
     result.json().then((json) => {
-      setLogin(json.login);
-      setAvatar(json.avatar_url);
-      setName(json.name);
-      setLink(json.html_url);
-      // setPerson(json);
+      // setLogin(json.login);
+      // setAvatar(json.avatar_url);
+      // setName(json.name);
+      // setLink(json.html_url);
+      setPerson(json);
     });
   };
 
@@ -84,17 +84,19 @@ export default function App() {
         </form>
       </div>
       {login && (
-        <div className='user'>
-          <img src={avatar} alt={name} />
-          <p>Login: {login}</p>
-          <p>
-            GitHub Profile:{' '}
-            <a href={link} target='_blank'>
-              {login}
-            </a>
-          </p>
+        <div className='container'>
+          <div className='user'>
+            <img src={person.avatar_url} alt={person.name} />
+            <p>Login: {person.login}</p>
+            <p>
+              GitHub Profile:{' '}
+              <a href={person.html_url} target='_blank'>
+                {person.login}
+              </a>
+            </p>
+          </div>
           <div>
-            <ul>{friends}</ul>
+            <ul className='userFriends'>{friends}</ul>
           </div>
         </div>
       )}
