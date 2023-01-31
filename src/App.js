@@ -49,11 +49,11 @@ export default function App() {
 
   const fetchData = async () => {
     const URL = `https://api.github.com/users/${user}`;
-    if (!user) return;
+    if (!person) return;
 
     const result = await fetch(URL);
     result.json().then((json) => {
-      // setLogin(json.login);
+      setLogin(json.login);
       // setAvatar(json.avatar_url);
       // setName(json.name);
       // setLink(json.html_url);
@@ -83,7 +83,7 @@ export default function App() {
           </button>
         </form>
       </div>
-      {login && (
+      {person && login && (
         <div className='container'>
           <div className='user'>
             <img src={person.avatar_url} alt={person.name} />
@@ -95,9 +95,7 @@ export default function App() {
               </a>
             </p>
           </div>
-          <div>
-            <ul className='userFriends'>{friends}</ul>
-          </div>
+          <div className='user'>{friends}</div>
         </div>
       )}
     </div>
