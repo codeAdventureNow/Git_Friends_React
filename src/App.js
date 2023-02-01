@@ -78,7 +78,7 @@ export default function App() {
             value={user}
             onChange={(e) => setUser(e.target.value)}
           ></input>
-          <button type='submit' id='fetchdata'>
+          <button className='button' type='submit' id='fetchdata'>
             Search
           </button>
         </form>
