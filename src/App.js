@@ -14,18 +14,18 @@ export default function App() {
   const [flogin, setFLogin] = useState([]);
 
   // console.log(flogin);
-  console.log(person);
+  // console.log(person);
 
   function handleSubmit(e) {
     e.preventDefault();
     fetchData();
     fetchFriends();
 
-    console.log(`Submitted ${user}`);
+    // console.log(`Submitted ${user}`);
   }
 
   const friends = flogin.map((friend) => (
-    <li key={friend.id}>
+    <div className='user' key={friend.id}>
       <img src={friend.avatar_url} alt={friend.login} />
       <p>Login: {friend.login}</p>
       <p>
@@ -34,7 +34,7 @@ export default function App() {
           {friend.login}
         </a>
       </p>
-    </li>
+    </div>
   ));
 
   const fetchFriends = async () => {
@@ -95,7 +95,19 @@ export default function App() {
               </a>
             </p>
           </div>
-          <div className='user'>{friends}</div>
+          {/* <div className='user'>{friends}</div> */}
+          {flogin.map((friend) => (
+            <div className='user' key={friend.id}>
+              <img src={friend.avatar_url} alt={friend.login} />
+              <p>Login: {friend.login}</p>
+              <p>
+                GitHub Profile:{' '}
+                <a href={friend.html_url} target='_blank'>
+                  {friend.login}
+                </a>
+              </p>
+            </div>
+          ))}
         </div>
       )}
     </div>
