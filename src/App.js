@@ -24,18 +24,18 @@ export default function App() {
     // console.log(`Submitted ${user}`);
   }
 
-  const friends = flogin.map((friend) => (
-    <div className='user' key={friend.id}>
-      <img src={friend.avatar_url} alt={friend.login} />
-      <p>Login: {friend.login}</p>
-      <p>
-        GitHub Profile:{' '}
-        <a href={friend.html_url} target='_blank'>
-          {friend.login}
-        </a>
-      </p>
-    </div>
-  ));
+  // const friends = flogin.map((friend) => (
+  //   <div className='user' key={friend.id}>
+  //     <img src={friend.avatar_url} alt={friend.login} />
+  //     <p>Login: {friend.login}</p>
+  //     <p>
+  //       GitHub Profile:{' '}
+  //       <a href={friend.html_url} target='_blank'>
+  //         {friend.login}
+  //       </a>
+  //     </p>
+  //   </div>
+  // ));
 
   const fetchFriends = async () => {
     const URL = `https://api.github.com/users/${user}/followers`;
@@ -97,15 +97,17 @@ export default function App() {
           </div>
           {/* <div className='user'>{friends}</div> */}
           {flogin.map((friend) => (
-            <div className='user' key={friend.id}>
-              <img src={friend.avatar_url} alt={friend.login} />
-              <p>Login: {friend.login}</p>
-              <p>
-                GitHub Profile:{' '}
-                <a href={friend.html_url} target='_blank'>
-                  {friend.login}
-                </a>
-              </p>
+            <div className='friendCard'>
+              <div className='user' key={friend.id}>
+                <img src={friend.avatar_url} alt={friend.login} />
+                <p>Login: {friend.login}</p>
+                <p>
+                  GitHub Profile:{' '}
+                  <a href={friend.html_url} target='_blank'>
+                    {friend.login}
+                  </a>
+                </p>
+              </div>
             </div>
           ))}
         </div>
