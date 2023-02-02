@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
-import Card from './Card.js';
-import Form from './Form.js';
+import Card from './components/Card.js';
+import Form from './components/Form.js';
 
 export default function App() {
   //set user for API call
