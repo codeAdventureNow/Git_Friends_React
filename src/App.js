@@ -1,20 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-
-function Card({ src, login, href, alt }) {
-  return (
-    <div className='user'>
-      <img src={src} alt={alt} />
-      <p>Login: {login}</p>
-      <p>
-        GitHub Profile:{' '}
-        <a href={href} target='_blank'>
-          {login}
-        </a>
-      </p>
-    </div>
-  );
-}
+import Card from './Card.js';
 
 export default function App() {
   //set user for API call
@@ -72,16 +58,6 @@ export default function App() {
       </div>
       {person.login && (
         <div id='app'>
-          {/* <div className='user'>
-            <img src={person.avatar_url} alt={person.name} />
-            <p>Login: {person.login}</p>
-            <p>
-              GitHub Profile:{' '}
-              <a href={person.html_url} target='_blank'>
-                {person.login}
-              </a>
-            </p>
-          </div> */}
           <Card
             src={person.avatar_url}
             alt={person.name}
@@ -89,16 +65,12 @@ export default function App() {
             href={person.html_url}
           />
           {friends.map((friend) => (
-            <div className='user' key={friend.id}>
-              <img src={friend.avatar_url} alt={friend.login} />
-              <p>Login: {friend.login}</p>
-              <p>
-                GitHub Profile:{' '}
-                <a href={friend.html_url} target='_blank'>
-                  {friend.login}
-                </a>
-              </p>
-            </div>
+            <Card
+              src={friend.avatar_url}
+              alt={friend.name}
+              login={friend.login}
+              href={friend.html_url}
+            />
           ))}
         </div>
       )}
