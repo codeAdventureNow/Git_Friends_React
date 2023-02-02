@@ -17,7 +17,7 @@ export default function App() {
 
   const fetchData = async () => {
     const URL = `https://api.github.com/users/${user}`;
-    if (!person) return;
+    if (!user) return;
 
     const result = await fetch(URL);
     result.json().then((json) => {
@@ -67,7 +67,6 @@ export default function App() {
               </a>
             </p>
           </div>
-          {/* <div className='user'>{friends}</div> */}
           {friends.map((friend) => (
             <div className='user' key={friend.id}>
               <img src={friend.avatar_url} alt={friend.login} />
