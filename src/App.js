@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Card from './Card.js';
+import Form from './Form.js';
 
 export default function App() {
   //set user for API call
@@ -41,21 +42,11 @@ export default function App() {
       <h1>
         Git <span className='friends'>Friends</span>
       </h1>
-      <div className='button'>
-        <form onSubmit={handleSubmit}>
-          <div className='button'>
-            <button type='submit' id='fetchdata'>
-              Search
-            </button>
-          </div>
-          <input
-            className='inputContainer'
-            placeholder='   Enter Git Hub Name'
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          ></input>
-        </form>
-      </div>
+      <Form
+        value={user}
+        onChange={(e) => setUser(e.target.value)}
+        onSubmit={handleSubmit}
+      />
       {person.login && (
         <div id='app'>
           <Card
