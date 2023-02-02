@@ -1,6 +1,21 @@
 import './App.css';
 import { useState } from 'react';
 
+function Card({ src, login, href, alt }) {
+  return (
+    <div className='user'>
+      <img src={src} alt={alt} />
+      <p>Login: {login}</p>
+      <p>
+        GitHub Profile:{' '}
+        <a href={href} target='_blank'>
+          {login}
+        </a>
+      </p>
+    </div>
+  );
+}
+
 export default function App() {
   //set user for API call
   const [user, setUser] = useState('');
@@ -57,7 +72,7 @@ export default function App() {
       </div>
       {person.login && (
         <div id='app'>
-          <div className='user'>
+          {/* <div className='user'>
             <img src={person.avatar_url} alt={person.name} />
             <p>Login: {person.login}</p>
             <p>
@@ -66,7 +81,13 @@ export default function App() {
                 {person.login}
               </a>
             </p>
-          </div>
+          </div> */}
+          <Card
+            src={person.avatar_url}
+            alt={person.name}
+            login={person.login}
+            href={person.html_url}
+          />
           {friends.map((friend) => (
             <div className='user' key={friend.id}>
               <img src={friend.avatar_url} alt={friend.login} />
