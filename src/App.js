@@ -7,7 +7,7 @@ export default function App() {
   // for primary person we are searching
   const [person, setPerson] = useState({});
   //primary persons friends
-  const [flogin, setFLogin] = useState([]);
+  const [friends, setFriends] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +31,7 @@ export default function App() {
 
     const result = await fetch(URL);
     result.json().then((json) => {
-      setFLogin(json);
+      setFriends(json);
     });
   };
 
@@ -68,7 +68,7 @@ export default function App() {
             </p>
           </div>
           {/* <div className='user'>{friends}</div> */}
-          {flogin.map((friend) => (
+          {friends.map((friend) => (
             <div className='user' key={friend.id}>
               <img src={friend.avatar_url} alt={friend.login} />
               <p>Login: {friend.login}</p>
